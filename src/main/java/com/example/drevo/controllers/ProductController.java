@@ -1,17 +1,13 @@
 package com.example.drevo.controllers;
 
 import com.example.drevo.entities.Product;
-import com.example.drevo.entities.ProductType;
+import com.example.drevo.entities.ProductMaterial;
 import com.example.drevo.services.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/products")
@@ -40,8 +36,8 @@ public class ProductController {
         return productService.getProducts();
     }
 
-    @ModelAttribute("productTypes")
-    public List<ProductType> getProductTypes() {
-        return productService.getProductTypes();
+    @ModelAttribute("productMaterials")
+    public List<ProductMaterial> getProductMaterials() {
+        return productService.getProductMaterials();
     }
 }

@@ -21,11 +21,16 @@ public class User {
     @JoinColumn
     private UserRole role;
 
+    @OneToOne
+    @JoinColumn
+    private Address address;
+
     public User() {}
 
-    public User(String name, String password, UserRole role) {
+    public User(String name, String password, UserRole role, Address address) {
         this.name = name;
         this.password = password;
         this.role = role;
+        this.address = address;
     }
 }

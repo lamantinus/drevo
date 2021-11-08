@@ -4,15 +4,15 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class ProductType {
+public class ProductMaterial {
 
     @Id
     @Column
     private String name;
 
-    public ProductType() {}
+    public ProductMaterial() {}
 
-    public ProductType(String name) {
+    public ProductMaterial(String name) {
         this.name = name;
     }
 

@@ -1,7 +1,7 @@
 package com.example.drevo.dao;
 
 import com.example.drevo.entities.Product;
-import com.example.drevo.entities.ProductType;
+import com.example.drevo.entities.ProductMaterial;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -28,8 +28,8 @@ public class ProductDAOImpl implements ProductDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<ProductType> getProductTypes() {
-        return entityManager.createQuery("from ProductType ").getResultList();
+    public List<ProductMaterial> getProductMaterials() {
+        return entityManager.createQuery("from ProductMaterial ").getResultList();
     }
 
     @Override

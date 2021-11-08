@@ -2,7 +2,7 @@ package com.example.drevo.services;
 
 import com.example.drevo.dao.ProductDAOImpl;
 import com.example.drevo.entities.Product;
-import com.example.drevo.entities.ProductType;
+import com.example.drevo.entities.ProductMaterial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +20,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<ProductType> getProductTypes() {
-        return productDAO.getProductTypes();
+    public List<ProductMaterial> getProductMaterials() {
+        return productDAO.getProductMaterials();
     }
 
     @Override

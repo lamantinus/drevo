@@ -11,7 +11,10 @@
 <body>
     <c:forEach var="product" items="${products}">
         <div>
-            <div>${product.name} - ${product.price}р. (${product.type.name})</div>
+            <div>${product.name} - ${product.price}р. (${product.material.name}, ${product.care}, ${product.filling}, ${product.deliveryDays})</div>
+            <br />
+            <img src="${product.imageUrl}" height="150" />
+            <br /><br />
         </div>
     </c:forEach>
 
@@ -24,12 +27,28 @@
                 <td><form:input path="name" /></td>
             </tr>
             <tr>
-                <td>Type</td>
-                <td><form:select path="type" items="${productTypes}" itemValue="name" itemLabel="name" /></td>
+                <td>Care</td>
+                <td><form:input path="care" /></td>
+            </tr>
+            <tr>
+                <td>Filling</td>
+                <td><form:input path="filling" /></td>
+            </tr>
+            <tr>
+                <td>Image URL</td>
+                <td><form:input path="imageUrl" /></td>
             </tr>
             <tr>
                 <td>Price</td>
-                <td><form:input path="price" /></td>
+                <td><form:input path="price" type="number" /></td>
+            </tr>
+            <tr>
+                <td>Delivery Days</td>
+                <td><form:input path="deliveryDays" type="number" /></td>
+            </tr>
+            <tr>
+                <td>Material</td>
+                <td><form:select path="material" items="${productMaterials}" itemValue="name" itemLabel="name" /></td>
             </tr>
             <tr>
                 <td></td>

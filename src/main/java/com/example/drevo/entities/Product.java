@@ -15,18 +15,34 @@ public class Product {
     private String name;
 
     @Column
+    private String care;
+
+    @Column
+    private String filling;
+
+    @Column
+    private String imageUrl;
+
+    @Column
     private Integer price;
+
+    @Column
+    private Integer deliveryDays;
 
     @OneToOne
     @JoinColumn
-    private ProductType type;
+    private ProductMaterial material;
 
     public Product() {}
 
-    public Product(String name, Integer price, ProductType type) {
+    public Product(String name, String care, String filling, String imageUrl, Integer price, Integer deliveryDays, ProductMaterial material) {
         this.name = name;
+        this.care = care;
+        this.filling = filling;
+        this.imageUrl = imageUrl;
         this.price = price;
-        this.type = type;
+        this.deliveryDays = deliveryDays;
+        this.material = material;
     }
 
     public String getName() {
@@ -45,11 +61,43 @@ public class Product {
         this.price = price;
     }
 
-    public ProductType getType() {
-        return type;
+    public ProductMaterial getMaterial() {
+        return material;
     }
 
-    public void setType(ProductType type) {
-        this.type = type;
+    public void setMaterial(ProductMaterial material) {
+        this.material = material;
+    }
+
+    public String getCare() {
+        return care;
+    }
+
+    public void setCare(String care) {
+        this.care = care;
+    }
+
+    public String getFilling() {
+        return filling;
+    }
+
+    public void setFilling(String filling) {
+        this.filling = filling;
+    }
+
+    public Integer getDeliveryDays() {
+        return deliveryDays;
+    }
+
+    public void setDeliveryDays(Integer deliveryDays) {
+        this.deliveryDays = deliveryDays;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
