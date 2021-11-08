@@ -7,14 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping(value = "/")
-public class IndexController {
+public class HelpController {
 
-    @GetMapping
-    public String index(Model model) {
-//        @RequestParam(value="name", required=false, defaultValue="World") String name
-//        model.addAttribute("name", name);
-        return "index";
+    @GetMapping("/help/shipping")
+    public String shipping() {
+        return "shipping";
     }
 
 }

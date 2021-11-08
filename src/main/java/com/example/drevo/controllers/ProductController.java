@@ -1,8 +1,10 @@
 package com.example.drevo.controllers;
 
 import com.example.drevo.entities.Product;
+import com.example.drevo.entities.ProductCategory;
 import com.example.drevo.entities.ProductMaterial;
 import com.example.drevo.services.ProductServiceImpl;
+import com.sun.istack.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -32,8 +34,9 @@ public class ProductController {
     }
 
     @ModelAttribute("products")
-    public List<Product> getProducts() {
-        return productService.getProducts();
+    public List<Product> getProducts(@RequestParam(name = "category", required = false) ProductCategory category) {
+        System.out.println(category);
+        return productService.getProducts(category);
     }
 
     @ModelAttribute("productMaterials")

@@ -1,12 +1,15 @@
 package com.example.drevo.dao;
 
 import com.example.drevo.entities.Product;
+import com.example.drevo.entities.ProductCategory;
 import com.example.drevo.entities.ProductMaterial;
+import com.sun.istack.Nullable;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -21,9 +24,22 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Product> getProducts() {
-        return entityManager.createQuery("from Product ").getResultList();
+        return entityManager.createQuery("from Product").getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Product> getProducts(ProductCategory category) {
+        if (category == null) {
+            return entityManager.createQuery("from Product").getResultList();
+        }
+
+        Query query = entityManager.createQuery("from Product P WHERE P.category = :category");
+
+        query.setParameter("category", category);
+
+        return query.getResultList();
     }
 
     @Override

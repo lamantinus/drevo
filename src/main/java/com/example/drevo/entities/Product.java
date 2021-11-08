@@ -1,6 +1,7 @@
 package com.example.drevo.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -31,18 +32,28 @@ public class Product {
 
     @OneToOne
     @JoinColumn
+    private ProductCategory category;
+
+    @OneToOne
+    @JoinColumn
     private ProductMaterial material;
+
+    @OneToMany
+    @JoinColumn
+    private List<Order> orders;
 
     public Product() {}
 
-    public Product(String name, String care, String filling, String imageUrl, Integer price, Integer deliveryDays, ProductMaterial material) {
+    public Product(String name, String care, String filling, String imageUrl, Integer price, Integer deliveryDays, ProductCategory category, ProductMaterial material, List<Order> orders) {
         this.name = name;
         this.care = care;
         this.filling = filling;
         this.imageUrl = imageUrl;
         this.price = price;
         this.deliveryDays = deliveryDays;
+        this.category = category;
         this.material = material;
+        this.orders = orders;
     }
 
     public String getName() {
@@ -99,5 +110,13 @@ public class Product {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

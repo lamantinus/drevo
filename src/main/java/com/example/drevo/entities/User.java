@@ -1,6 +1,7 @@
 package com.example.drevo.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -24,6 +25,20 @@ public class User {
     @OneToOne
     @JoinColumn
     private Address address;
+
+//    @JoinTable(
+//            name = "Order",
+//            joinColumns = @JoinColumn(
+//                    name = "user_id",
+//                    referencedColumnName = "user_id"
+//            ),
+//            inverseJoinColumns = @JoinColumn(
+//                    name = "product_id",
+//                    referencedColumnName = "product_id"
+//            )
+//    )
+//    @OneToMany
+//    private List<Order> orders;
 
     public User() {}
 
