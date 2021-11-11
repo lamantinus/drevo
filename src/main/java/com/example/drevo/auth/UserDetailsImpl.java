@@ -22,6 +22,10 @@ public class UserDetailsImpl implements UserDetails {
         return Arrays.asList(authority);
     }
 
+    public User getUser() {
+        return user;
+    }
+
     @Override
     public String getPassword() {
         return user.getPassword();

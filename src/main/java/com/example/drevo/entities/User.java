@@ -77,4 +77,12 @@ public class User {
     public void setPurchases(List<Basket> baskets) {
         this.baskets = baskets;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

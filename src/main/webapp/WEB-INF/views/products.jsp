@@ -12,10 +12,16 @@
 <body>
     <c:forEach var="product" items="${products}">
         <div>
-            <div>${product.name} - ${product.price}р. (${product.material.name}, ${product.care}, ${product.filling}, ${product.deliveryDays})</div>
+            <h4>${product.name}</h4>
+            <div>Price: ${product.price}р.</div>
+            <div>Material: ${product.material.name}</div>
+            <div>Product care: ${product.care}</div>
+            <div>Filing: ${product.filling}</div>
+            <div>Delivery: ${product.deliveryDays}</div>
             <br />
             <img src="${product.imageUrl}" height="150" />
             <br /><br />
+            <hr />
         </div>
     </c:forEach>
 

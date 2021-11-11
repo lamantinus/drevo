@@ -26,14 +26,19 @@ public class Address {
     @Column
     private String address;
 
+    @OneToOne
+    @JoinColumn
+    private User user;
+
     public Address() {}
 
-    public Address(String zipCode, String country, String region, String city, String address) {
+    public Address(String zipCode, String country, String region, String city, String address, User user) {
         this.zipCode = zipCode;
         this.country = country;
         this.region = region;
         this.city = city;
         this.address = address;
+        this.user = user;
     }
 
     public String getZipCode() {

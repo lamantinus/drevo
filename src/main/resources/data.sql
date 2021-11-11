@@ -16,8 +16,8 @@ INSERT INTO user (id, username, password, role_name) VALUES
 (DEFAULT, 'admin', '$2a$10$bfhMOcaGids7iiuTZl1E/Op10N/sGekq9wTjQL5iSNuOa7ZKia8g2', 'ADMIN'),
 (DEFAULT, 'customer', '$2a$10$bfhMOcaGids7iiuTZl1E/Op10N/sGekq9wTjQL5iSNuOa7ZKia8g2', 'CUSTOMER');
 
-INSERT INTO address (id, zip_code, country, region, city, address) VALUES
-(DEFAULT, '220000', 'Belarus', 'Minskiy', 'Minsk', 'Nemiga st. 130');
+INSERT INTO address (id, zip_code, country, region, city, address, user_id) VALUES
+(DEFAULT, '220000', 'Belarus', 'Minskiy', 'Minsk', 'Nemiga st. 130', '1');
 
 INSERT INTO product (id, name, care, filling, image_url, price, delivery_days, category_name, material_name) VALUES
 (DEFAULT, 'First Product', 'Do not wash', 'Flowers', 'https://i.imgur.com/Ep79QKy.jpg', 100, 3, 'PENDANT', 'WOOD'),
