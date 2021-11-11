@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <html>
 <head>
@@ -10,7 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 
     <style>
-        .links {
+        .top-left {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .top-right {
             position: absolute;
             top: 20px;
             right: 20px;
@@ -33,10 +39,24 @@
     <header>
         <h2>drevojewelry</h2>
 
-        <div class="links">
+        <sec:authorize access="isAuthenticated()">
+            <div class="top-left">
+                Hello, <strong>${pageContext.request.userPrincipal.name}</strong>!
+            </div>
+        </sec:authorize>
+
+        <div class="top-right">
             <a href="/help/shipping">Shipping</a> |
-            <a href="/basket">Basket</a> |
-            <a href="/login">Login</a>
+            <a href="/basket">Basket</a>
+
+            <sec:authorize access="!isAuthenticated()">
+                | <a href="/login">Login</a>
+                | <a href="/registration">Register</a>
+            </sec:authorize>
+
+            <sec:authorize access="isAuthenticated()">
+                | <a href="/logout">Logout</a>
+            </sec:authorize>
         </div>
     </header>
 

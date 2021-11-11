@@ -19,7 +19,7 @@ public class ProductController {
     private ProductServiceImpl productService;
 
     @GetMapping
-    public String get(@ModelAttribute("product") Product product) {
+    public String get() {
         return "products";
     }
 
@@ -35,7 +35,6 @@ public class ProductController {
 
     @ModelAttribute("products")
     public List<Product> getProducts(@RequestParam(name = "category", required = false) ProductCategory category) {
-        System.out.println(category);
         return productService.getProducts(category);
     }
 

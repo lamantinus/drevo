@@ -13,7 +13,7 @@ public class User {
     private int id;
 
     @Column
-    private String name;
+    private String username;
 
     @Column
     private String password;
@@ -26,26 +26,55 @@ public class User {
     @JoinColumn
     private Address address;
 
-//    @JoinTable(
-//            name = "Order",
-//            joinColumns = @JoinColumn(
-//                    name = "user_id",
-//                    referencedColumnName = "user_id"
-//            ),
-//            inverseJoinColumns = @JoinColumn(
-//                    name = "product_id",
-//                    referencedColumnName = "product_id"
-//            )
-//    )
-//    @OneToMany
-//    private List<Order> orders;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Basket> baskets;
 
     public User() {}
 
-    public User(String name, String password, UserRole role, Address address) {
-        this.name = name;
+    public User(String username, String password, UserRole role, Address address) {
+        this.username = username;
         this.password = password;
         this.role = role;
         this.address = address;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public void setRole(UserRole role) {
+        this.role = role;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Basket> getPurchases() {
+        return baskets;
+    }
+
+    public void setPurchases(List<Basket> baskets) {
+        this.baskets = baskets;
     }
 }

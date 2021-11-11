@@ -38,13 +38,12 @@ public class Product {
     @JoinColumn
     private ProductMaterial material;
 
-    @OneToMany
-    @JoinColumn
-    private List<Order> orders;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<BasketItem> basketItems;
 
     public Product() {}
 
-    public Product(String name, String care, String filling, String imageUrl, Integer price, Integer deliveryDays, ProductCategory category, ProductMaterial material, List<Order> orders) {
+    public Product(String name, String care, String filling, String imageUrl, Integer price, Integer deliveryDays, ProductCategory category, ProductMaterial material) {
         this.name = name;
         this.care = care;
         this.filling = filling;
@@ -53,7 +52,6 @@ public class Product {
         this.deliveryDays = deliveryDays;
         this.category = category;
         this.material = material;
-        this.orders = orders;
     }
 
     public String getName() {
@@ -112,11 +110,11 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public ProductCategory getCategory() {
+        return category;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setCategory(ProductCategory category) {
+        this.category = category;
     }
 }

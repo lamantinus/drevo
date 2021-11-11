@@ -12,9 +12,9 @@ INSERT INTO product_category (name) VALUES
 ('RING'),
 ('OTHER');
 
-INSERT INTO user (id, name, password, role_name) VALUES
-(DEFAULT, 'First Admin', 'password', 'ADMIN'),
-(DEFAULT, 'First Customer', 'password', 'CUSTOMER');
+INSERT INTO user (id, username, password, role_name) VALUES
+(DEFAULT, 'admin', '$2a$10$bfhMOcaGids7iiuTZl1E/Op10N/sGekq9wTjQL5iSNuOa7ZKia8g2', 'ADMIN'),
+(DEFAULT, 'customer', '$2a$10$bfhMOcaGids7iiuTZl1E/Op10N/sGekq9wTjQL5iSNuOa7ZKia8g2', 'CUSTOMER');
 
 INSERT INTO address (id, zip_code, country, region, city, address) VALUES
 (DEFAULT, '220000', 'Belarus', 'Minskiy', 'Minsk', 'Nemiga st. 130');
@@ -24,6 +24,9 @@ INSERT INTO product (id, name, care, filling, image_url, price, delivery_days, c
 (DEFAULT, 'Second Product', 'Do something', 'Moss', 'https://i.imgur.com/ZYLOXfq.jpg', 200, 2, 'PENDANT', 'EPOXY'),
 (DEFAULT, 'Third Product', 'You know it', 'Wood', 'https://i.imgur.com/Haj3DYJ.jpg', 300, 1, 'RING', 'WOOD_EPOXY');
 
--- INSERT INTO order (id, date, user, product) VALUES
--- (DEFAULT, '2021-09-20', 'password', 'ADMIN'),
--- (DEFAULT, '2021-09-21', 'password', 'CUSTOMER');
+INSERT INTO basket (id, date, user_id) VALUES
+(DEFAULT, '2021-09-20', '1');
+
+INSERT INTO basket_item (id, quantity, basket_id, product_id) VALUES
+(DEFAULT, '2', '1', '2'),
+(DEFAULT, '1', '1', '3');
