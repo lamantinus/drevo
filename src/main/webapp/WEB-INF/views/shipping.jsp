@@ -5,11 +5,11 @@
 </head>
 
 <body>
-    <header>
-        <h2>Shipping Information</h2>
+    <%@ include file = "./parts/header.jsp" %>
 
-        Some information...
-    </header>
+    <h2>Shipping Information</h2>
+
+    Some information...
 </body>
 </html>
 

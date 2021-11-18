@@ -27,8 +27,18 @@ public class UserController {
         return "user";
     }
 
+    @PostMapping
+    void post(@AuthenticationPrincipal UserDetailsImpl userDetails, @ModelAttribute("address") Address address) {
+        userService.setAddress(userDetails.getUser(), address);
+    }
+
     @ModelAttribute("address")
     public Address getAddress(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return userService.getAddress(userDetails.getUser());
+    }
+
+    @ModelAttribute("orders")
+    public List<Basket> getOrders(@AuthenticationPrincipal UserDetailsImpl userDetails) {
+        return userService.getOrders(userDetails.getUser());
     }
 }

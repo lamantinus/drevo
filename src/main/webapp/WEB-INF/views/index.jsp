@@ -22,18 +22,6 @@
             background-size: cover;
         }
 
-        .top-left {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        .top-right {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-        }
-
         .bottom-left {
             position: absolute;
             bottom: 20px;
@@ -85,30 +73,9 @@
 </head>
 
 <body>
-    <header>
-        <h2>drevojewelry</h2>
+    <%@ include file = "./parts/header.jsp" %>
 
-        <sec:authorize access="isAuthenticated()">
-            <div class="top-left">
-                Hello, <strong>${pageContext.request.userPrincipal.name}</strong>!
-                <a href="/user">Go to profile</a>
-            </div>
-        </sec:authorize>
-
-        <div class="top-right">
-            <a href="/help/shipping">Shipping</a> |
-            <a href="/basket">Basket</a>
-
-            <sec:authorize access="!isAuthenticated()">
-                | <a href="/login">Login</a>
-                | <a href="/registration">Register</a>
-            </sec:authorize>
-
-            <sec:authorize access="isAuthenticated()">
-                | <a href="/logout">Logout</a>
-            </sec:authorize>
-        </div>
-    </header>
+    <h2>drevojewelry</h2>
 
     <div>
         <a href="/products?category=RING"><button>Rings</button></a>

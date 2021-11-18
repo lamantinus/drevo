@@ -10,7 +10,11 @@
 </head>
 
 <body>
-    <c:forEach var="product" items="${products}">
+    <%@ include file = "./parts/header.jsp" %>
+
+    <h2>Products</h2>
+
+    <c:forEach var="product" items="${products}" varStatus="status">
         <div>
             <h4>${product.name}</h4>
             <div>Price: ${product.price}р.</div>
@@ -21,12 +25,16 @@
             <br />
             <img src="${product.imageUrl}" height="150" />
             <br /><br />
-            <hr />
+            <form:form method="post" action="/products/buy/${product.id}">
+                <input type="submit" value="Buy" />
+            </form:form>
+            <br /><br />
+            <c:if test="${!status.last}"><hr /></c:if>
         </div>
     </c:forEach>
 
     <sec:authorize access="hasAuthority('ADMIN')">
-        <h3>Add Product</h3>
+        <h2>Add Product</h2>
 
         <form:form method="post" action="/products" modelAttribute="product">
             <table cellpadding="2" cellspacing="2">

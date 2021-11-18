@@ -24,8 +24,8 @@ INSERT INTO product (id, name, care, filling, image_url, price, delivery_days, c
 (DEFAULT, 'Second Product', 'Do something', 'Moss', 'https://i.imgur.com/ZYLOXfq.jpg', 200, 2, 'PENDANT', 'EPOXY'),
 (DEFAULT, 'Third Product', 'You know it', 'Wood', 'https://i.imgur.com/Haj3DYJ.jpg', 300, 1, 'RING', 'WOOD_EPOXY');
 
-INSERT INTO basket (id, date, user_id) VALUES
-(DEFAULT, '2021-09-20', '1');
+INSERT INTO basket (id, completed, date, user_id) VALUES
+(DEFAULT, true, '2021-09-20', '1');
 
 INSERT INTO basket_item (id, quantity, basket_id, product_id) VALUES
 (DEFAULT, '2', '1', '2'),

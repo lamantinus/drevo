@@ -1,31 +1,45 @@
 package com.example.drevo.controllers;
 
+import com.example.drevo.auth.UserDetailsImpl;
 import com.example.drevo.entities.Product;
 import com.example.drevo.entities.ProductCategory;
 import com.example.drevo.entities.ProductMaterial;
 import com.example.drevo.services.ProductServiceImpl;
+import com.example.drevo.services.UserServiceImpl;
 import com.sun.istack.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/products")
+@RequestMapping
 public class ProductController {
+
+    @Autowired
+    private UserServiceImpl userService;
 
     @Autowired
     private ProductServiceImpl productService;
 
-    @GetMapping
+    @GetMapping(value = "/products")
     public String get() {
         return "products";
     }
 
-    @PostMapping
-    Product post(@ModelAttribute("product") Product product) {
-        return productService.add(product);
+    @PostMapping(value = "/products")
+    String createProduct(HttpServletRequest request, @ModelAttribute("product") Product product) {
+        productService.add(product);
+        return "redirect:" + request.getHeader("Referer");
+    }
+
+    @PostMapping(value = "/products/buy/{id}")
+    String buy(HttpServletRequest request, @AuthenticationPrincipal UserDetailsImpl userDetails, @PathVariable int id) {
+        userService.buy(userDetails.getUser(), id);
+        return "redirect:" + request.getHeader("Referer");
     }
 
     @ModelAttribute("product")

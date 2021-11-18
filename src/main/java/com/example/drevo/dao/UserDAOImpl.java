@@ -1,7 +1,6 @@
 package com.example.drevo.dao;
 
-import com.example.drevo.entities.Address;
-import com.example.drevo.entities.User;
+import com.example.drevo.entities.*;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Repository
 @Transactional
@@ -23,12 +23,61 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public Address getAddress(User user) {
-        System.out.println("TEST");
-        System.out.println(user.getId());
         return (Address) entityManager
-                .createQuery("from Address a where a.user_id = 1")
-//                .setParameter("user", user.getId())
-                .getResultList().get(0);
+            .createQuery("from Address a where a.user.id = :user")
+            .setParameter("user", user.getId())
+            .getResultList().get(0);
+    }
+
+    @Override
+    public void setAddress(User user, Address address) {
+        Session session = this.getSession();
+        session.saveOrUpdate(address);
+    }
+
+    @Override
+    public List<Basket> getOrders(User user) {
+        return entityManager
+            .createQuery("from Basket b where b.completed = true and b.user.id = :user")
+            .setParameter("user", user.getId())
+            .getResultList();
+    }
+
+    @Override
+    public Basket getBasket(User user) {
+        return (Basket) entityManager
+            .createQuery("from Basket b where b.completed = false and b.user.id = :user")
+            .setParameter("user", user.getId())
+            .getResultList().stream().findFirst().orElse(null); // https://stackoverflow.com/a/46344029
+    }
+
+    @Override
+    public void buy(User user, Integer productId) {
+        Session session = this.getSession();
+
+        Basket basket = this.getBasket(user);
+
+        if (basket == null) {
+            basket = new Basket(user);
+
+            session.persist(basket);
+
+            BasketItem basketItem = new BasketItem(1, basket, productId);
+
+            session.persist(basketItem);
+        } else {
+            BasketItem basketItem = basket.getBasketItems().stream()
+                .filter(item -> item.getProduct().getId().equals(productId))
+                .findFirst().orElse(null);
+
+            if (basketItem == null) {
+                basketItem = new BasketItem(1, basket, productId);
+            }
+
+            basketItem.setQuantity(basketItem.getQuantity() + 1);
+
+            session.persist(basketItem);
+        }
     }
 
     @Override

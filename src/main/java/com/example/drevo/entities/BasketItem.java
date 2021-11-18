@@ -10,6 +10,9 @@ public class BasketItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "product_id")
+    private int productId;
+
     @Column
     private Integer quantity;
 
@@ -18,15 +21,15 @@ public class BasketItem {
     private Basket basket;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
     private Product product;
 
     public BasketItem() {}
 
-    public BasketItem(Integer quantity, Basket basket, Product product) {
+    public BasketItem(Integer quantity, Basket basket, int productId) {
         this.quantity = quantity;
         this.basket = basket;
-        this.product = product;
+        this.productId = productId;
     }
 
     public Integer getQuantity() {

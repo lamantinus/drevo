@@ -1,5 +1,7 @@
 package com.example.drevo.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +16,10 @@ public class Basket {
     private int id;
 
     @Column
-    @Temporal(TemporalType.DATE)
+    private boolean completed;
+
+    @Column
+    @CreationTimestamp
     private Date date;
 
     @ManyToOne
@@ -26,9 +31,16 @@ public class Basket {
 
     public Basket() {}
 
-    public Basket(Date date, User user) {
-        this.date = date;
+    public Basket(User user) {
         this.user = user;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
     }
 
     public Date getDate() {
@@ -45,5 +57,13 @@ public class Basket {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<BasketItem> getBasketItems() {
+        return basketItems;
+    }
+
+    public void setBasketItems(List<BasketItem> basketItems) {
+        this.basketItems = basketItems;
     }
 }
