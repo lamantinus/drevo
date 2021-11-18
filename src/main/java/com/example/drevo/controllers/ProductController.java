@@ -52,6 +52,11 @@ public class ProductController {
         return productService.getProducts(category);
     }
 
+    @ModelAttribute("productCategories")
+    public List<ProductCategory> getProductCategories() {
+        return productService.getProductCategories();
+    }
+
     @ModelAttribute("productMaterials")
     public List<ProductMaterial> getProductMaterials() {
         return productService.getProductMaterials();

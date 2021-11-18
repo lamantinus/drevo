@@ -9,10 +9,11 @@ import java.util.List;
 public interface ProductDAO {
     List<Product> getProducts();
     List<Product> getProducts(ProductCategory category);
+    List<ProductCategory> getProductCategories();
     List<ProductMaterial> getProductMaterials();
-    void add(Product film);
-    void delete(Product film);
-    void edit(Product film);
+    void add(Product product);
+    void delete(Product product);
+    void edit(Product product);
     Product getById(int id);
 }
 

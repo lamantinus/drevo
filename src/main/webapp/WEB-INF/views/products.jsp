@@ -39,6 +39,14 @@
         <form:form method="post" action="/products" modelAttribute="product">
             <table cellpadding="2" cellspacing="2">
                 <tr>
+                    <td>Category</td>
+                    <td><form:select path="category" items="${productCategories}" itemValue="name" itemLabel="name" /></td>
+                </tr>
+                <tr>
+                    <td>Material</td>
+                    <td><form:select path="material" items="${productMaterials}" itemValue="name" itemLabel="name" /></td>
+                </tr>
+                <tr>
                     <td>Name</td>
                     <td><form:input path="name" /></td>
                 </tr>
@@ -52,7 +60,7 @@
                 </tr>
                 <tr>
                     <td>Image URL</td>
-                    <td><form:input path="imageUrl" /></td>
+                    <td><form:input path="imageUrl" type="url" /></td>
                 </tr>
                 <tr>
                     <td>Price</td>
@@ -63,15 +71,13 @@
                     <td><form:input path="deliveryDays" type="number" /></td>
                 </tr>
                 <tr>
-                    <td>Material</td>
-                    <td><form:select path="material" items="${productMaterials}" itemValue="name" itemLabel="name" /></td>
-                </tr>
-                <tr>
                     <td></td>
                     <td><input type="submit" value="Save" /></td>
                 </tr>
             </table>
         </form:form>
     </sec:authorize>
+
+    <%@ include file = "./parts/footer.jsp" %>
 </body>
 </html>

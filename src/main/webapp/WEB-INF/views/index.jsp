@@ -28,8 +28,22 @@
             left: 20px;
         }
 
+        .bottom-right {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
         .fa-instagram {
             color: #E1306C;
+        }
+
+        .fa-adjust {
+            color: #444;
+        }
+
+        .dark-theme .fa-adjust {
+            color: #aaa;
         }
 
         h2 {
@@ -39,6 +53,11 @@
             text-align: center;
             margin-top: 200px;
             text-shadow: 6px 6px #ffcb00;
+        }
+
+        .dark-theme h2 {
+            color: #eee;
+            text-shadow: none;
         }
 
         button {
@@ -93,6 +112,12 @@
     <div class="bottom-left">
         <a href="https://www.instagram.com/drevojewelry"><i class="fab fa-instagram fa-2x"></i></a>
     </div>
+
+    <div class="bottom-right">
+        <i class="fas fa-adjust fa-2x"></i>
+    </div>
+
+    <%@ include file = "./parts/footer.jsp" %>
 </body>
 </html>
 

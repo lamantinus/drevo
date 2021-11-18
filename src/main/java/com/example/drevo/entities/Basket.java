@@ -35,6 +35,14 @@ public class Basket {
         this.user = user;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public boolean isCompleted() {
         return completed;
     }

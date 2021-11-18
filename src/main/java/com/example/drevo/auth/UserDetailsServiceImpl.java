@@ -1,6 +1,7 @@
 package com.example.drevo.auth;
 
 import com.example.drevo.entities.User;
+import com.example.drevo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

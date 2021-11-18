@@ -27,5 +27,7 @@
             <c:if test="${!status.last}"><hr /></c:if>
         </div>
     </c:forEach>
+
+    <%@ include file = "./parts/footer.jsp" %>
 </body>
 </html>

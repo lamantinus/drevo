@@ -10,6 +10,8 @@
     <h2>Shipping Information</h2>
 
     Some information...
+
+    <%@ include file = "./parts/footer.jsp" %>
 </body>
 </html>
 

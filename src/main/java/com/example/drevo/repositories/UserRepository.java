@@ -1,4 +1,4 @@
-package com.example.drevo.auth;
+package com.example.drevo.repositories;
 
 import com.example.drevo.entities.User;
 import org.springframework.data.jpa.repository.Query;

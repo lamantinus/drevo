@@ -7,9 +7,26 @@
         padding: 16px;
     }
 
+    body.dark-theme {
+        color: white;
+        background-color: #121212;
+    }
+
     header {
         display: flex;
         justify-content: space-between;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    .dark-theme a:visited {
+        color: #ddd;
+    }
+
+    .dark-theme a, .dark-theme a:hover {
+        color: white;
     }
 </style>
 
@@ -20,6 +37,9 @@
             <c:if test="${!fn:startsWith(requestScope['javax.servlet.forward.request_uri'], '/user')}">
                 <a href="/user">Go to profile</a>
             </c:if>
+            <sec:authorize access="hasAuthority('ADMIN')">
+                | <a href="/admin/orders">Not completed orders</a>
+            </sec:authorize>
         </sec:authorize>
     </div>
 

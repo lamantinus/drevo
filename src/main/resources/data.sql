@@ -1,3 +1,10 @@
+INSERT INTO country (name) VALUES
+('Belarus'),
+('Russian Federation'),
+('Ukraine'),
+('Poland'),
+('Kazakhstan');
+
 INSERT INTO user_role (name) VALUES
 ('CUSTOMER'),
 ('ADMIN');

@@ -43,6 +43,11 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public List<ProductCategory> getProductCategories() {
+        return entityManager.createQuery("from ProductCategory ").getResultList();
+    }
+
+    @Override
     @SuppressWarnings("unchecked")
     public List<ProductMaterial> getProductMaterials() {
         return entityManager.createQuery("from ProductMaterial ").getResultList();

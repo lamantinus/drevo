@@ -10,6 +10,7 @@ import java.util.List;
 public interface ProductService {
     List<Product> getProducts();
     List<Product> getProducts(ProductCategory category);
+    List<ProductCategory> getProductCategories();
     List<ProductMaterial> getProductMaterials();
     Product add(Product film);
     void delete(Product film);

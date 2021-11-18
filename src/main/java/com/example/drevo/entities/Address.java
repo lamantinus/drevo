@@ -1,6 +1,7 @@
 package com.example.drevo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 
 @Entity
 @Table

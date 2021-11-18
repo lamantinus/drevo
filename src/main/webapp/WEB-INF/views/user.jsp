@@ -24,7 +24,7 @@
                     </tr>
                     <tr>
                         <td>Country</td>
-                        <td><form:input path="country" /></td>
+                        <td><form:select path="country" items="${countries}" itemValue="name" itemLabel="name" /></td>
                     </tr>
                     <tr>
                         <td>Region</td>
@@ -73,5 +73,7 @@
             </div>
         </c:forEach>
     </c:forEach>
+
+    <%@ include file = "./parts/footer.jsp" %>
 </body>
 </html>
