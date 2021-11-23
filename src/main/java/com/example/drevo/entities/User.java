@@ -18,11 +18,14 @@ public class User {
     @Column
     private String password;
 
+    @Column
+    private String phone;
+
     @OneToOne
     @JoinColumn
     private UserRole role;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     @JoinColumn
     private Address address;
 
@@ -31,9 +34,10 @@ public class User {
 
     public User() {}
 
-    public User(String username, String password, UserRole role, Address address) {
+    public User(String username, String password, String phone, UserRole role, Address address) {
         this.username = username;
         this.password = password;
+        this.phone = phone;
         this.role = role;
         this.address = address;
     }
@@ -52,6 +56,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public UserRole getRole() {

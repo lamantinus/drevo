@@ -20,7 +20,7 @@
             <div>Price: ${product.price}р.</div>
             <div>Material: ${product.material.name}</div>
             <div>Product care: ${product.care}</div>
-            <div>Filing: ${product.filling}</div>
+            <div><fmt:message key="product.filling" />: ${product.filling}</div>
             <div>Delivery: ${product.deliveryDays}</div>
             <br />
             <img src="${product.imageUrl}" height="150" />

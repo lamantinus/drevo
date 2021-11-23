@@ -1,6 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="messages" />
 
 <style>
     body {
@@ -28,6 +33,10 @@
     .dark-theme a, .dark-theme a:hover {
         color: white;
     }
+
+    .top-right form {
+        display: inline-block;
+    }
 </style>
 
 <header>
@@ -43,7 +52,7 @@
         </sec:authorize>
     </div>
 
-    <div>
+    <div class="top-right">
         <a href="/">Main Page</a> |
         <a href="/help/shipping">Shipping</a> |
         <a href="/basket">Basket</a>
@@ -56,5 +65,12 @@
         <sec:authorize access="isAuthenticated()">
             | <a href="/logout">Logout</a>
         </sec:authorize>
+
+        | <form>
+            <select id="language" name="language" onchange="submit()">
+                <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+                <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russian</option>
+            </select>
+        </form>
     </div>
 </header>

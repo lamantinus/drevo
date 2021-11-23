@@ -1,4 +1,6 @@
+<%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -97,7 +99,7 @@
     <h2>drevojewelry</h2>
 
     <div>
-        <a href="/products?category=RING"><button>Rings</button></a>
+        <a href="/products?category=RING"><button><fmt:message key="product.category.rings" /></button></a>
         <a href="/products?category=PENDANT"><button>Pendants</button></a>
         <a href="/products?category=OTHER"><button>Other</button></a>
         <a href="/products"><button>All</button></a>
